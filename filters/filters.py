@@ -75,9 +75,9 @@ class Filters:
 
     def join(self, table, condition):
         errors = []
-        if not self.is_str(table):
+        if not self.is_str(table) or table is None:
             errors['table'] = "Must be a str"
-        if not self.is_str(table):
+        if not self.is_str(condition) or condition is None:
             errors['condition'] = "Must be a str"
         if errors:
             raise ValueError(errors)
