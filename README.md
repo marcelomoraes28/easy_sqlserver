@@ -5,14 +5,14 @@ This is a simple library to assist in manipulating SQL Server data
 ## Requirements
 
 * Python >= 3.5
-* Set the environments:
+* Set the environments (Eg: **export SQLSERVER_SERVER="0.0.0.0""**)
   * SQLSERVER_SERVER
   * SQLSERVER_PORT
   * SQLSERVER_USERNAME
   * SQLSERVER_PASSWD
   * SQLSERVER_DATABASE
 
-## How can I use
+## How can I use?
 
 ### Methods
 
