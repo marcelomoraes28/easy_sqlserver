@@ -12,7 +12,7 @@ This is a simple library to assist in manipulating SQL Server data
   * SQLSERVER_PASSWD
   * SQLSERVER_DATABASE
 
-## How can I used
+## How can I use
 
 ### Methods
 
