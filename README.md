@@ -24,7 +24,7 @@ This is a simple library to assist in manipulating SQL Server data
  * query(str): If you want write a query to execute, use this method
 
 * **Example 1**
-
+```
 from easy_sqlserver.easy_sqlserver import EasySQLServer
 
 
@@ -33,9 +33,9 @@ easy_sqlserver.select("MY_TABLE1")
 easy_sqlserver.join("MY_TABLE2", "MY_TABLE1.id = MY_TABLE2.my_table1_id")
 easy_sqlserver.where("MY_TABLE1.id = 11")
 results = easy_sqlserver.execute()
-
+```
 * **Example 2**
-
+```
 from easy_sqlserver.easy_sqlserver import EasySQLServer
 
 
@@ -44,13 +44,14 @@ easy_sqlserver.select("MY_TABLE1")
 easy_sqlserver.join("MY_TABLE2", "MY_TABLE1.id = MY_TABLE2.my_table1_id")
 easy_sqlserver.where(["MY_TABLE1.name like '%jose%'", "MY_TABLE1.type=2"])
 results = easy_sqlserver.execute()
-
+```
 
 * **Example 3**
-
+```
 from easy_sqlserver.easy_sqlserver import EasySQLServer
 
 
 easy_sqlserver = EasySQLServer()
 easy_sqlserver.query("SELECT TOP 10 FROM MY_TABLE1")
 results = easy_sqlserver.execute()
+```
