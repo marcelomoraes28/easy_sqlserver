@@ -5,10 +5,11 @@ class Filters:
 
     q_table = None
     q_fields = []
-    q_limit = 1000
+    q_limit = 10000
     q_where = []
     q_join = []
     q_query = None
+    q_order_by = None
 
     @staticmethod
     def is_integer(var):
@@ -35,11 +36,13 @@ class Filters:
             return self.__class__.query
         where_clause = " ".join(self.__class__.q_where)
         join_clause = " ".join(self.__class__.q_join)
+        order_by_clause = (
+            " order by " + self.__class__.q_order_by) if self.__class__.q_order_by else ''
         fields_clause = ", ".join(
             self.__class__.q_fields) if self.__class__.q_fields else '*'
-        query = "SELECT TOP %s %s from %s where 1=1 %s %s" % (
+        query = "SELECT TOP %s %s from %s where 1=1 %s %s %s" % (
             self.__class__.q_limit, fields_clause, self.__class__.q_table,
-            where_clause, join_clause) + ";"
+            where_clause, join_clause, order_by_clause) + ";"
 
         return query
 
@@ -72,6 +75,11 @@ class Filters:
         if not self.is_integer(limit):
             raise ValueError("limit clause must be integer")
         self.__class__.q_limit = limit
+
+    def order_by(self, order_by):
+        if not self.is_str(order_by):
+            raise ValueError("order_by clause must be str")
+        self.__class__.q_order_by = order_by
 
     def join(self, table, condition):
         errors = []
