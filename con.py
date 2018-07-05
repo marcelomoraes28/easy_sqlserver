@@ -1,7 +1,8 @@
 import pymssql
+from easy_sqlserver import Singleton
 
 
-class Connection(object):
+class Connection(object, metaclass=Singleton):
     def __init__(self, server, port, user, passwd, database):
         self.server = server
         self.port = port
@@ -26,18 +27,32 @@ class Connection(object):
     def validate(self):
         errors = []
         if self.server is None:
-            errors.append("SERVER is required, please set SQLSERVER_SERVER env")
+            errors.append(
+                {
+                    "server": "SERVER is required, please set SQLSERVER_SERVER env"
+                }
+            )
         if self.port is None:
             errors.append(
-                "PORT is required, please set SQLSERVER_PORT env")
+                {"port": "PORT is required, please set SQLSERVER_PORT env"})
         if self.passwd is None:
             errors.append(
-                "PASSWORD is required, please set SQLSERVER_PASSWD env")
+                {
+                    "password": "PASSWORD is required, please set SQLSERVER_PASSWD env"
+                }
+            )
         if self.user is None:
             errors.append(
-                "USER is required, please set SQLSERVER_USER env")
+                {
+                    "user": "USER is required, please set SQLSERVER_USER env"
+                }
+            )
         if self.database is None:
             errors.append(
-                "DATABASE is required, please set SQLSERVER_DATABASE env")
+                {
+                    "database": "DATABASE is required, please set SQLSERVER_DATABASE env"
+                }
+            )
+
         if errors:
             raise ValueError(errors)
