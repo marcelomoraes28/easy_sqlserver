@@ -22,6 +22,7 @@ This is a simple library to assist in manipulating SQL Server data
  * join(str, str): Set the join table in first parameter and condition in second parameter
  * fields(list): Set list of fields to show (By default it's all (*))
  * query(str): If you want write a query to execute, use this method
+ * order_by(str): If you want ordering results, use this method
 
 * **Example 1**
 ```
