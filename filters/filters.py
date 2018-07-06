@@ -1,3 +1,6 @@
+import re
+
+
 class Filters:
     """
     Class to generate querys
@@ -37,14 +40,14 @@ class Filters:
         where_clause = " ".join(self.__class__.q_where)
         join_clause = " ".join(self.__class__.q_join)
         order_by_clause = (
-            " order by " + self.__class__.q_order_by) if self.__class__.q_order_by else ''
+                " order by " + self.__class__.q_order_by) if self.__class__.q_order_by else ''
         fields_clause = ", ".join(
             self.__class__.q_fields) if self.__class__.q_fields else '*'
         query = "SELECT TOP %s %s from %s where 1=1 %s %s %s" % (
             self.__class__.q_limit, fields_clause, self.__class__.q_table,
             where_clause, join_clause, order_by_clause) + ";"
 
-        return query
+        return re.sub(' +', ' ', query)
 
     def query(self, query):
         """
@@ -64,7 +67,7 @@ class Filters:
 
     def where(self, cond):
         if self.is_list(cond):
-            [self.__class__.q_where.append(" AND '%s'" % condition) for
+            [self.__class__.q_where.append(" AND %s" % condition) for
              condition in cond]
         if self.is_str(cond):
             self.__class__.q_where.append(" AND  %s " % cond)
@@ -91,7 +94,7 @@ class Filters:
             raise ValueError(errors)
         self.__class__.q_join.append(" JOIN %s on %s" % (table, condition))
 
-    def fields(self, fields=[]):
+    def fields(self, fields=None):
         if not self.is_list(fields):
             raise ValueError("fields clause must be a list")
-        self.__class__.q_fields.append(fields)
+        self.__class__.q_fields = fields
