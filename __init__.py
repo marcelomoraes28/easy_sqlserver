@@ -1,13 +1,10 @@
-"""
-Singleton class
-"""
+__author__ = "Marcelo Moraes"
+__copyright__ = "Copyright 2018"
+__credits__ = ["Marcelo Moraes"]
+__license__ = "MIT"
+__version__ = "1.0.0"
+__maintainer__ = "Marcelo Moraes"
+__email__ = "marcelomoraesjr28@gmail.com"
+__status__ = "Testing"
 
-
-class Singleton(type):
-    _instances = {}
-
-    def __call__(cls, *args, **kwargs):
-        if cls not in cls._instances:
-            cls._instances[cls] = super(Singleton, cls).__call__(*args,
-                                                                 **kwargs)
-        return cls._instances[cls]
+from .easy_sqlserver import EasySQLServer
