@@ -21,7 +21,7 @@ class EasySQLServer(Filters):
     def execute(self):
         try:
             connection = self.con.connect()
-            cursor = connection.cursor()
+            cursor = connection.cursor(as_dict=True)
             cursor.execute(self.sql())
             rows = cursor.fetchall()
         except pymssql.ProgrammingError as e:
