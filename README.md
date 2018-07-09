@@ -12,6 +12,11 @@ This is a simple library to assist in manipulating SQL Server data
   * SQLSERVER_PASSWD
   * SQLSERVER_DATABASE
 
+## Installing
+```
+pip install easy-sqlserver
+```
+
 ## How can I use?
 
 ### Methods
@@ -26,7 +31,7 @@ This is a simple library to assist in manipulating SQL Server data
 
 * **Example 1**
 ```
-from easy_sqlserver.easy_sqlserver import EasySQLServer
+from easy_sqlserver import EasySQLServer
 
 
 easy_sqlserver = EasySQLServer()
@@ -37,7 +42,7 @@ results = easy_sqlserver.execute()
 ```
 * **Example 2**
 ```
-from easy_sqlserver.easy_sqlserver import EasySQLServer
+from easy_sqlserver import EasySQLServer
 
 
 easy_sqlserver = EasySQLServer()
@@ -49,7 +54,7 @@ results = easy_sqlserver.execute()
 
 * **Example 3**
 ```
-from easy_sqlserver.easy_sqlserver import EasySQLServer
+from easy_sqlserver import EasySQLServer
 
 
 easy_sqlserver = EasySQLServer()
