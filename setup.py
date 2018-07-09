@@ -3,7 +3,7 @@ from setuptools import setup
 setup(name='easy_sqlserver',
       description='A simple active record to assist in manipulating SQL Server data',
       long_description="This is a simple library to assist in manipulating SQL Server data",
-      version='0.0.8',
+      version='0.0.9',
       url='https://github.com/marcelomoraes28/easy_sqlserver',
       author='Marcelo Moraes',
       author_email='marcelomoraesjr28@gmail.com',
