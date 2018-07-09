@@ -57,7 +57,7 @@ class Connection(object, metaclass=Singleton):
         if self.user is None:
             errors.append(
                 {
-                    "user": "USER is required, please set SQLSERVER_USER env"
+                    "user": "USER is required, please set SQLSERVER_USERNAME env"
                 }
             )
         if self.database is None:
