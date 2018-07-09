@@ -2,3 +2,6 @@
 *.py~
 .idea/*
 env
+build
+dist
+easy_sqlserver.egg-info
