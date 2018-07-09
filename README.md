@@ -5,12 +5,34 @@ This is a simple library to assist in manipulating SQL Server data
 ## Requirements
 
 * Python >= 3.5
-* Set the environments (Eg: **export SQLSERVER_SERVER=0.0.0.0**)
+
+## Configuration
+### Configuration by environments
+Set the environments (Eg: **export SQLSERVER_SERVER=0.0.0.0**)
   * SQLSERVER_SERVER
   * SQLSERVER_PORT
   * SQLSERVER_USERNAME
   * SQLSERVER_PASSWD
   * SQLSERVER_DATABASE
+```
+from easy_sqlserver import EasySQLServer
+
+
+easy_sqlserver = EasySQLServer()
+```
+### Configuration by parameters
+```
+from easy_sqlserver import EasySQLServer
+
+
+easy_sqlserver = EasySQLServer({
+                                "SQLSERVER_SERVER": "myhost.com",
+                                "SQLSERVER_PORT": 1433,
+                                "SQLSERVER_USERNAME": "myuser",
+                                "SQLSERVER_PASSWD": "mypass",
+                                "SQLSERVER_DATABASE": "mydb"
+                                })
+```
 
 ## Installing
 ```
