@@ -1,22 +1,32 @@
 import os
 from .filters import filters
 from .con import Connection
+from argparse import Namespace
+
 import pymssql
 
-SERVER = os.getenv("SQLSERVER_SERVER")
-PORT = os.getenv("SQLSERVER_PORT")
-USERNAME = os.getenv("SQLSERVER_USERNAME")
-PASSWD = os.getenv("SQLSERVER_PASSWD")
-DATABASE = os.getenv("SQLSERVER_DATABASE")
+# Database configurations with environments
+CONFIGS = {
+    "SQLSERVER_SERVER": os.getenv("SQLSERVER_SERVER"),
+    "SQLSERVER_PORT": os.getenv("SQLSERVER_PORT"),
+    "SQLSERVER_USERNAME": os.getenv("SQLSERVER_USERNAME"),
+    "SQLSERVER_PASSWD": os.getenv("SQLSERVER_PASSWD"),
+    "SQLSERVER_DATABASE": os.getenv("SQLSERVER_DATABASE")
+}
 
 
 class EasySQLServer(filters.Filters):
     """
     Easy SQL Server library
     """
-    def __init__(self):
-        self.con = Connection(SERVER, PORT, USERNAME, PASSWD,
-                              DATABASE)
+
+    def __init__(self, configs={}):
+        if configs:
+            CONFIGS.update(configs)
+        conf = Namespace(**CONFIGS)
+        self.con = Connection(conf.SQLSERVER_SERVER, conf.SQLSERVER_PORT,
+                              conf.SQLSERVER_USERNAME, conf.SQLSERVER_PASSWD,
+                              conf.SQLSERVER_DATABASE)
 
     def execute(self):
         try:
