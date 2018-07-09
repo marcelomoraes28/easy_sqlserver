@@ -2,6 +2,11 @@
 
 This is a simple library to assist in manipulating SQL Server data
 
+## Installing
+```
+pip install easy-sqlserver
+```
+
 ## Requirements
 
 * Python >= 3.5
@@ -32,11 +37,6 @@ easy_sqlserver = EasySQLServer({
                                 "SQLSERVER_PASSWD": "mypass",
                                 "SQLSERVER_DATABASE": "mydb"
                                 })
-```
-
-## Installing
-```
-pip install easy-sqlserver
 ```
 
 ## How can I use?
