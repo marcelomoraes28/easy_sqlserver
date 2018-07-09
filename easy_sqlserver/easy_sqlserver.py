@@ -1,5 +1,5 @@
 import os
-from .filters.filters import Filters
+from .filters import filters
 from .con import Connection
 import pymssql
 
@@ -10,7 +10,7 @@ PASSWD = os.getenv("SQLSERVER_PASSWD")
 DATABASE = os.getenv("SQLSERVER_DATABASE")
 
 
-class EasySQLServer(Filters):
+class EasySQLServer(filters.Filters):
     """
     Easy SQL Server library
     """
